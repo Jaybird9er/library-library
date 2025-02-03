@@ -1,0 +1,85 @@
+[project]
+name = "library-library"
+description = "a local community used bookstore"
+version = "0.1.0"
+authors = [
+    { name = "Jamey \" Kirk", email = "jameykirk@gmail.com" },
+]
+dependencies = [
+    "fastapi[standard] ~= 0.115.6",
+    "pydantic-settings",
+    "asyncpg ~= 0.30.0",
+    "SQLAlchemy ~= 2.0.37",
+    "greenlet ~= 3.1.1",
+    "uvicorn",
+    "prometheus-client",
+    "prometheus_fastapi_instrumentator"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-mock",
+    "alembic",
+    "ruff",
+    "testcontainers"
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--asyncio-mode=auto"
+]
+
+[project.scripts]
+run = "app.main:main"
+
+
+[tool.ruff]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+lint.select = ["E", "F", "I001"]
+lint.ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+lint.fixable = ["A", "B", "C", "D", "E", "F", "I001"]
+lint.unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+lint.per-file-ignores = {}
+
+# Same as Black.
+line-length = 120
+
+# Allow unused variables when underscore-prefixed.
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.12.
+target-version = "py312"
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 50
