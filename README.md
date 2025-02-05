@@ -57,7 +57,7 @@ run
 #### Build the Image
 
 ```shell
-# Build the image defined in the current directory, tagging it with the name library-library"
+# Build the image defined in the current directory, tagging it with the name "library-library"
 docker build . -t library-library
 ```
 
