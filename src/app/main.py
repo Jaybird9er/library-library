@@ -5,6 +5,9 @@ from fastapi import FastAPI
 """ 
 from app.routes.product import router as product_router
 """
+
+from app.routes.book import router as book_router
+
 from app.settings import Settings
 
 # Don't forget to create your Settings object to use it!
@@ -18,6 +21,7 @@ app = FastAPI()
 """
 app.include_router(product_router, prefix="/products")
 """
+app.include_router(book_router, prefix="/books")
 
 # From our pyproject.toml, we define this main function as our entrypoint.
 def main():

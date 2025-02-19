@@ -71,7 +71,7 @@ docker compose up -d
 docker run --name backend-server --rm \
     --network library-library-backend_default \
     --env DB_HOST=database \
-    --publish 8000:8000 \
+    --publish 8008:8008 \
     library-library
 ```
 
